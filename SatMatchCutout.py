@@ -1,7 +1,7 @@
 import numpy
 import math
 import arcpy
-import os
+
 # import time
 # import sys
 import string
@@ -18,16 +18,16 @@ import string
 # Both the reference and the source image need to be in the same projection!
 
 
-inUAV = 'C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/uav2sat-resample\\Madera_2018-07-05_UAV_GRN_Sat-Rsmp_v01.tif'
-inSAT = 'C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Sat_files\\LC08_L1TP_042035_20180705_20180717_01_T1_sr_band3.tif'
-outcsv ='C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Testing\\testingscat.csv'
+inUAV = 'C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/uav2sat-resample/Madera_2018-07-05_UAV_GRN_Sat-Rsmp_v01.tif'
+inSAT = 'C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Sat_files/LC08_L1TP_042035_20180705_20180717_01_T1_sr_band3.tif'
+outImg ='C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Testing/testingscat.tif'
 # outTbl = arcpy.GetParameterAsText(2)
 # noDataThreshold = 0.1
 
 
 # inUAV = arcpy.GetParameterAsText(0)
 # inSAT = arcpy.GetParameterAsText(1)
-# outcsv = arcpy.GetParameterAsText(2)
+# outTbl = arcpy.GetParameterAsText(2)
 # outImg = arcpy.GetParameterAsText(3)
 # noDataThreshold = arcpy.GetParameterAsText(4)
 
@@ -89,33 +89,10 @@ imgNew = imgSAT[offy:offy+rows,offx:offx+cols]
 
 arcpy.AddMessage('saving result')
 
-
-# convert images into vectors of strings, leaving out any pixel with no data
-
-# reshape the image data into vectors
-imgUAV = numpy.reshape(imgUAV,(imgUAV.size))
-imgNew = numpy.reshape(imgNew,(imgUAV.size))
-
-# turn the image data into text, using the file names as headers
-csvUAV = [ inUAV.split('\\')[-1] ]
-csvNew = [ inSAT.split('\\')[-1] ]
-
-for i in range(imgUAV.size):
-    if imgUAV[i] != nodatavalue and imgNew[i] != nodatavalue:
-        csvUAV.append('%f' %imgUAV[i])
-        csvNew.append(str(imgNew[i]))
-
-csvTXT = ''
-for i in range(len(csvUAV)):
-    csvTXT += csvUAV[i] + ',' + csvNew[i] + '\n'
-
-# make a comma-separated list out of each image, and add to the output file
-f = open(outcsv,'w')
-f.writelines(csvTXT)
-f.close()
-
-
-
+# Convert Array to raster (keep the origin and cellsize the same as the input)
+newRaster = arcpy.NumPyArrayToRaster(imgNew, lowerLeftNew, cellSize, value_to_nodata=nodatavalue)
+arcpy.DefineProjection_management(newRaster, metaSAT.SpatialReference)
+newRaster.save(outImg)
 
 
 # arcpy.AddMessage('done')

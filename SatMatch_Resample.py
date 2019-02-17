@@ -154,7 +154,7 @@ while True:
         break
 # left column
 while True:
-    if (imageNew[:,1] != nodatavalue).sum() ==0:
+    if (imageNew[:,0] != nodatavalue).sum() ==0:
         imageNew = imageNew[:,1:]
         lowerLeftNew.X += cellSizeSAT
     else:
