@@ -17,9 +17,9 @@ import arcpy
 
 
 
-# inUAV =  'C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Reflectance_Files/RED/madera_2018-07-05_Fabcd_transparent_reflectance_red.tif'
+# inIMG =  'C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Reflectance_Files/RED/madera_2018-07-05_Fabcd_transparent_reflectance_red.tif'
 # inSAT =  'C:/Users/aanderson29/Box/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Mike/Satelite Data_Testing/Landsat/LC08_L1TP_042035_20180619_20180703_01_T1_B11.TIF'
-# outImg = 'C:/Users/aanderson29/Box/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Testing/testingfast2.tif'
+# outIMG = 'C:/Users/aanderson29/Box/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Testing/testingfast2.tif'
 # noDataThreshold = 0.1
 
 inUAV = arcpy.GetParameterAsText(0)

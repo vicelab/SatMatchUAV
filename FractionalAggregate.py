@@ -13,9 +13,9 @@ nodatavalue= -10000 # not sure if this is a good one, but I had to pick somethin
 inUAV = 'C:/Users/aanderson29/Box/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/ndvi/madera_2018-07-05_Fabcd_index_ndvi.tif'
 inSAT = 'C:/Users/aanderson29/Box/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Mike/Satelite Data_Testing/Landsat/LC08_L1TP_042035_20180619_20180703_01_T1_B11.TIF'
 outMap = 'C:/Users/aanderson29/Box/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera Block 760/METRIC/WIP/Andy/Testing/nomoire2.tif'
-# inUAV = arcpy.GetParameterAsText(0)
+# inIMG = arcpy.GetParameterAsText(0)
 # inSAT = arcpy.GetParameterAsText(1)
-# outImg = arcpy.GetParameterAsText(2)
+# outIMG = arcpy.GetParameterAsText(2)
 
 
 

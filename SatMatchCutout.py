@@ -25,10 +25,10 @@ outImg ='C:/Users/aanderson29/Box Sync/[VICE Lab]/RESEARCH/PROJECTS/Gallo/Madera
 # noDataThreshold = 0.1
 
 
-# inUAV = arcpy.GetParameterAsText(0)
+# inIMG = arcpy.GetParameterAsText(0)
 # inSAT = arcpy.GetParameterAsText(1)
 # outTbl = arcpy.GetParameterAsText(2)
-# outImg = arcpy.GetParameterAsText(3)
+# outIMG = arcpy.GetParameterAsText(3)
 # noDataThreshold = arcpy.GetParameterAsText(4)
 
 nodatavalue= -10000 # not sure if this is a good one, but I had to pick something
